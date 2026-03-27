@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id="estate_menu_root" name="Immobiliària"/>
+    <menuitem id="estate_first_level_menu" name="Immobiliària" parent="estate_menu_root"/>
+    <menuitem id="estate_model_menu_action" action="estate_property_action" parent="estate_first_level_menu"/>
+</odoo>

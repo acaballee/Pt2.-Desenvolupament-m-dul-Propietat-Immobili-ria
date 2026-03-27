@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_list" model="ir.ui.view">
+        <field name="name">estate.property.list</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <list string="Propietat Immo">
+                <field name="name" />
+                <field name="description" />
+            </list>
+        </field>
+    </record>
+
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Propietat Immobiliària">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="postcode"/>
+                        </group>
+                        <group>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                            <field name="selling_price"/>
+                        </group>
+                        <group>
+                            <field name="bedrooms"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_view_filter" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Search Property">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="selling_price"/>
+                <filter string="Disponibles" name="Disponibles" domain="['|',('state', '=', 'New'),('state', '=', 'Offer Received')]" help="Propietats noves o amb oferta rebuda"/>
+                <filter string="Codi Postal" name="Codi Postal" context="{'group_by':'postcode'}"/>
+            </search>
+        </field>
+    </record>
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Propietats</field>
+        <field name="model">estate.property</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
